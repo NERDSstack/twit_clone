@@ -1,0 +1,18 @@
+<% include ./partials/header %>
+    <div class="container">
+        <div class="login-container">
+            <h3>Log in to TwitClone</h3>
+            <div class="outer-form">
+                <form action="/login" method="POST">
+                    <input class="form-control my-2" type="text" placeholder="Username" name="username">
+                    <input class="form-control my-2" type="password" placeholder="Password" name="password">
+                    <button class="btn btn-red">Log in</button>
+                </form>
+                <div class="card-bottom">
+                    <p>New to TwitClone? <a href="/signup">Sign up now >></a></p>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+<% include ./partials/footer %>

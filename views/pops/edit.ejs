@@ -1,0 +1,26 @@
+<%include ../partials/header %>
+
+<header class="mt-4 text-center">
+        <h1>Edit <%= pop.name %></h1>
+</header>
+<div class="container" >
+<!-- sends form to pop -->
+<div class="row" style="margin: 0 auto;">
+        <form class="mx-auto" action="/pops/<%= pop._id %>?_method=PUT" method="POST">
+            <div class="form-group">
+                <textarea class="col-sm-12 col-lg-12" name="pop[poptext]" id="descInput" cols="30" rows="10"><%= pop.poptext %></textarea>
+            </div>
+            <button type="submit" class="btn btn-danger btn-block">SUBMIT</button>
+        </form>
+
+</div>
+<p class="text-center">
+        <a href="/pops">Go Back</a>
+</p>
+
+</div>
+
+
+
+
+<%include ../partials/footer %>

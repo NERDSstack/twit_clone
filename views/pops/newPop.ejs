@@ -1,0 +1,27 @@
+<%include ../partials/header %>
+
+<header class="jumbotron text-center">
+        <h1>Make new Pop</h1>
+</header>
+<div class="container" >
+<!-- sends form to campground -->
+<div class="row" style="margin: 0 auto;">
+        <form class="mx-auto" action="/pops" method="POST">
+            <div class="form-group">
+                <label for="descInput"></label>
+                <input class="col-sm-12 col-lg-12" id="descInput" type="text" name="poptext" placeholder="Pop Text">
+            </div>
+            <button type="submit" class="btn btn-danger btn-block">SUBMIT</button>
+        </form>
+
+</div>
+<p class="text-center">
+        <a href="/pops">Go Back</a>
+</p>
+
+</div>
+
+
+
+
+<%include ../partials/footer %>

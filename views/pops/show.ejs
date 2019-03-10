@@ -1,0 +1,30 @@
+<%include ../partials/header %>
+
+<header class="text-center mt-2">
+    <h2>@<%= pop.author.username %></h2>
+</header>
+<div class="container">
+    <p><%= pop.poptext %></p>
+    <p>
+        <a class="btn btn-danger btn-sm float-right" href="/pops/<%= pop._id %>/comments/new">Add Comment</a>
+    </p>
+    <h3>Comments:</h3>
+    <% pop.comments.forEach((comment)=>{ %>
+        <div class="card px-2 py-2 my-2">
+            <p><strong><%= comment.author.username %></strong> - <span><%= comment.text %></span></p>
+            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                <div class="row">
+                    <p class="text-center col-sm-3">
+                        <a href="/pops/<%= pop._id %>/comments/<%= comment._id%>/edit" class="btn btn-sm btn-warning">Edit</a>
+                    </p>
+                    <form class="col-sm-3" action="/pops/<%= pop._id %>/comments/<%= comment._id%>?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete" class="btn btn-sm btn-danger">
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    <% }); %>
+</div>
+
+
+<%include ../partials/footer %>

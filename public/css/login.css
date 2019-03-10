@@ -1,0 +1,17 @@
+.login-container{
+    background-color: #fff;
+    width: 400px;
+    padding: 15px;
+    margin: 50px auto 0 auto;
+}
+#outer-left, #outer-right{
+    height: 100vh;
+}
+@media only screen and (max-width: 770px){
+    #outer-left, #outer-right{
+        height: 50vh;
+    }
+    p#btn-para{
+        text-align: center;
+    }
+}

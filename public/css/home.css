@@ -1,0 +1,30 @@
+:root{
+    --main-red-color: #d9534f;
+    --main-grey-color: #f5f5f5;
+}
+.home-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-column-gap: 10px;
+}
+
+#outer-form form{
+    background-color: var(--main-red-color);
+    padding: 10px;
+    margin: 0 auto;
+}
+#outer-form form input{
+    width: 81%;
+    height: 35px;
+    padding-left: 5px;
+
+    margin: 0 -10px 0 0;
+}
+.btn-red.fa-2x{
+    padding: 0;
+    margin: 0 0 0 -10px;
+}
+#pop-arrow:hover{
+    background-color: var(--main-red-color);
+    color: #fff;
+}
