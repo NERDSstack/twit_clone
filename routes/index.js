@@ -6,7 +6,7 @@ const User = require("../models/User");
 // routes
 // root route
 router.get("/", (req, res)=>{
-    res.render("landing", {title: "Welcome"});
+    res.render("loginOrSignup", {title: "Log in or Sign up"});
 });
 //============
 // auth routes

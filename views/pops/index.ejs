@@ -9,22 +9,23 @@
         
     </header>
     <div class="col-sm-12">
-        <% pops.forEach((pop)=>{ %>
+        <% pops.reverse().forEach((pop)=>{ %>
             <div class="col-auto my-2">
                 <div class="card w-100">
-                    <p class="text-center mt-4"><strong>@<%= pop.author.username %></strong></p>
-                    <p class="text-center"><%= pop.poptext %></p>
-                    <div class="row col-sm-5">
+                    <p class="mt-2 mb-1 ml-4"><strong>@<%= pop.author.username %></strong></p>
+                    <small><p class="create-date ml-4 mb-2"><%= pop.created.toDateString() %></p></small>
+                    <p class="ml-4 mb-2"><%= pop.poptext %></p>
+                    <div class="col-sm-5 mb-2">
                         <% if(currentUser && pop.author.id.equals(currentUser._id)){ %>
-                            <p class="col-sm-4 text-center">
-                                <a class="btn btn-danger btn-sm" href="/pops/<%= pop._id %>/edit">Edit Pop</a>
+                            <p class="text-center mx-2" id="edit-btn">
+                                <a id="edit-btn-link" class="btn btn-outline-danger btn-sm" href="/pops/<%= pop._id %>/edit"><i class="far fa-edit"></i></a>
                             </p>
-                            <form class="col-sm-4" action="/pops/<%= pop._id %>?_method=DELETE" method="POST">
-                                <button id="show-delete" class="btn btn-danger btn-sm mx-auto">Delete Post</button>
+                            <form id="delete-btn-form" class="mx-2" action="/pops/<%= pop._id %>?_method=DELETE" method="POST">
+                                <button id="show-delete" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></button>
                             </form>
                         <% } %>
-                        <p class="col-sm-4 text-center">
-                            <a class="btn btn-danger btn-sm" href="/pops/<%= pop._id %>">Reply</a>
+                        <p id="reply-btn" class="text-center mx-2">
+                            <a id="reply-btn-link" class="btn btn-outline-danger btn-sm" href="/pops/<%= pop._id %>"><i class="fas fa-reply"></i></a>
                         </p>
                     </div>
                 </div>

@@ -6,7 +6,7 @@
 <div class="container">
     <p><%= pop.poptext %></p>
     <p>
-        <a class="btn btn-danger btn-sm float-right" href="/pops/<%= pop._id %>/comments/new">Add Comment</a>
+        <a class="btn btn-danger btn-sm float-right" href="/pops/<%= pop._id %>/comments/new"><i class="far fa-comment-dots"></i> Reply</a>
     </p>
     <h3>Comments:</h3>
     <% pop.comments.forEach((comment)=>{ %>

@@ -1,17 +1,18 @@
 <%include ../partials/header %>
 
-<header class="jumbotron text-center">
+<header class="my-4 text-center">
         <h1>Make new Pop</h1>
 </header>
 <div class="container" >
 <!-- sends form to campground -->
 <div class="row" style="margin: 0 auto;">
-        <form class="mx-auto" action="/pops" method="POST">
+        <form id="new-pop-input" class="mx-auto" action="/pops" method="POST">
             <div class="form-group">
                 <label for="descInput"></label>
-                <input class="col-sm-12 col-lg-12" id="descInput" type="text" name="poptext" placeholder="Pop Text">
+                <textarea class="col-sm-12 col-lg-12" type="text" name="poptext" placeholder="Pop Text" maxlength="150"></textarea>
             </div>
-            <button type="submit" class="btn btn-danger btn-block">SUBMIT</button>
+            <p id="characters-left"><small><span id="characters-left-span"></span> CHARACTERS REMAINING</small></p>
+            <button type="submit" class="btn btn-danger btn-block my-2">SUBMIT</button>
         </form>
 
 </div>

@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
+const expressSanitizer = require("express-sanitizer");
 // have to install method override to run other methods
 // besides get and post
 const methodOverride = require("method-override");
@@ -50,6 +51,7 @@ app.use((req, res, next)=>{
     res.locals.success = req.flash("success");
     next();
 });
+app.use(expressSanitizer());
 
 // tells app where to look to find routes
 app.use(indexRoutes);

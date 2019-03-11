@@ -35,8 +35,7 @@ body{
     color: #fff;
 }
 /* div styles */
-#outer-left{
-}
+
 #left{
     width: 60%;
     margin: 0 auto;
@@ -54,4 +53,24 @@ body{
     top: 50%;
     transform: translateY(-50%);
     position: relative;
+}
+.create-date{
+    font-size: 70%;
+}
+#edit-btn, #delete-btn-form, #reply-btn{
+    display: inline;
+}
+#new-pop-textarea{
+    margin-bottom: -17px;
+}
+#characters-left{
+    margin-top: -20px;
+}
+#edit-btn-link, #show-delete, #reply-btn-link{
+    border: none;
+}
+#footer{
+    padding: 0;
+    color: #fff;
+    background: #d9534f;
 }

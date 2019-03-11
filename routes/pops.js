@@ -20,7 +20,7 @@ router.get("/pops", middleware.isLoggedIn, (req, res)=>{
 router.post("/pops", middleware.isLoggedIn, (req, res)=>{
     //grabs data and adds it to pops array
     let name = req.body.name;
-    let poptext = req.body.poptext;
+    let poptext = req.sanitize(req.body.poptext);
     let author = {
         id: req.user._id,
         username: req.user.username
@@ -59,7 +59,8 @@ router.get("/pops/:id/edit", middleware.checkPopsOwnership, (req, res)=>{
 });
 // update pop
 router.put("/pops/:id", middleware.checkPopsOwnership, (req, res)=>{
-    Pops.findByIdAndUpdate(req.params.id, req.body.pop, (err, updatedPop)=>{
+    let sanitizedPop = req.sanitize(req.body.pop);
+    Pops.findByIdAndUpdate(req.params.id, sanitizedPop, (err, updatedPop)=>{
         if(err){
             console.log("Error: " + err);
             res.redirect("/pops/edit");

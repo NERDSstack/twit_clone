@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 let popsSchema = new mongoose.Schema({
     name: String,
     poptext: String,
+    created: {
+        type: Date,
+        default: Date.now
+    },
     author:{
         id: {
             type: mongoose.Schema.Types.ObjectId,
