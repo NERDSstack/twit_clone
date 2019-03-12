@@ -20,6 +20,7 @@ router.post("/pops/:id/comments", middleware.isLoggedIn, (req, res)=>{
     Pops.findById(req.params.id, (err, pop)=>{
         if(err){
             console.log("Error: " + err);
+            req.flash("error", "You can't do that");
             res.redirect("/pops");
         }else{
             Comment.create(req.body.comment, (err, comment)=>{

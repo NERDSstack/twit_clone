@@ -65,6 +65,7 @@ router.put("/pops/:id", middleware.checkPopsOwnership, (req, res)=>{
             console.log("Error: " + err);
             res.redirect("/pops/edit");
         }else{
+            req.flash("succes", "Pop created");
             res.redirect("/pops/" + req.params.id);
         }
     });

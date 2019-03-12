@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const expressSanitizer = require("express-sanitizer");
+const multer = require("multer");
+const path = require("path");
 // have to install method override to run other methods
 // besides get and post
 const methodOverride = require("method-override");
@@ -19,6 +21,7 @@ const seedDB = require("./seeds");
 const indexRoutes = require("./routes/index");
 const popRoutes = require("./routes/pops");
 const commentRoutes = require("./routes/comments");
+const userProfileRoutes = require("./routes/userprofile");
 
 // db connection
 mongoose.connect("mongodb://phil:password1@ds163905.mlab.com:63905/twit_clone", {useNewUrlParser: true});
@@ -57,6 +60,7 @@ app.use(expressSanitizer());
 app.use(indexRoutes);
 app.use(popRoutes);
 app.use(commentRoutes);
+app.use(userProfileRoutes);
 
 // port to listen on
 const PORT = process.env.PORT || 3000;

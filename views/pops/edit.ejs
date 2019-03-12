@@ -8,7 +8,7 @@
 <div class="row" style="margin: 0 auto;">
         <form class="mx-auto" action="/pops/<%= pop._id %>?_method=PUT" method="POST">
             <div class="form-group">
-                <textarea class="col-sm-12 col-lg-12" name="pop[poptext]" id="descInput" cols="30" rows="10"><%= pop.poptext %></textarea>
+                <textarea class="col-sm-12 col-lg-12" name="pop[poptext]" id="descInput" cols="30" rows="10" required><%= pop.poptext %></textarea>
             </div>
             <button type="submit" class="btn btn-danger btn-block">SUBMIT</button>
         </form>

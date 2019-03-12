@@ -12,7 +12,7 @@
         <% pops.reverse().forEach((pop)=>{ %>
             <div class="col-auto my-2">
                 <div class="card w-100">
-                    <p class="mt-2 mb-1 ml-4"><strong>@<%= pop.author.username %></strong></p>
+                    <p class="mt-2 mb-1 ml-4"><strong><a href="/profile/<%= pop.author.id %>">@<%= pop.author.username %></a></strong></p>
                     <small><p class="create-date ml-4 mb-2"><%= pop.created.toDateString() %></p></small>
                     <p class="ml-4 mb-2"><%= pop.poptext %></p>
                     <div class="col-sm-5 mb-2">

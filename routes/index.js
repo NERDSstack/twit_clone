@@ -17,14 +17,22 @@ router.get("/signup", (req, res)=>{
 });
 // posts to sign up page
 router.post("/signup", (req, res)=>{
-    const newUser = new User ({username: req.body.username});
+    const newUser = new User (
+                                {
+                                    username: req.body.username,
+                                    realname: req.body.realname,
+                                    avatar: req.body.avatar,
+                                    email: req.body.email,
+                                    bio: req.body.bio
+                                }
+                            );
     User.register(newUser, req.body.password, (err, user)=>{
         if(err){
             req.flash("error", err.message);
             res.render("signup");
         }
         passport.authenticate("local")(req, res, ()=>{
-            req.flash("success", "Welxome to TwitClone" + req.body.username);
+            req.flash("success", "Welxome to TwitClone " + req.body.username);
             res.redirect("/pops");
         });
     });
