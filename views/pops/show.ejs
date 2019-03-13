@@ -11,7 +11,7 @@
     <h3>Comments:</h3>
     <% pop.comments.forEach((comment)=>{ %>
         <div class="card px-2 py-2 my-2">
-            <p><strong><%= comment.author.username %></strong> - <span><%= comment.text %></span></p>
+            <p><strong><a href="/profile/<%= comment.author.id %>"><%= comment.author.username %></a></strong> - <span><%= comment.text %></span></p>
             <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
                 <div class="row">
                     <p class="text-center col-sm-3">

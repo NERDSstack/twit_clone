@@ -7,14 +7,13 @@
     <h6>@<%= user.username %><h6>
     <p><%= user.realname %></p>
     <p><%= user.bio %></p>
-    <% if(currentUser.id === user.id){ %>
+    <% if(currentUser.id == user.id){ %>
         <p class="float-right">
             <a class="btn btn-danger" href="/profile/<%= currentUser.id %>/edit">Edit Profile</a>
         </p>
     <% } %>
-
     <div>
-        <% pops.forEach(pop=>{ %>
+        <% pops.reverse().forEach(pop=>{ %>
             <div class="card py-2 px-2">
                 <p><strong><%= pop.author.username %></strong></p>
                 <p class="mt-0"><small class="py-0"><%= pop.created.toDateString() %></small></p>

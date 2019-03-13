@@ -6,14 +6,14 @@ const User = require("../models/User");
 // routes
 // root route
 router.get("/", (req, res)=>{
-    res.render("loginOrSignup", {title: "Log in or Sign up"});
+    res.render("index/loginOrSignup", {title: "Log in or Sign up"});
 });
 //============
 // auth routes
 // ===========
 // shows sign up page
 router.get("/signup", (req, res)=>{
-    res.render("signup", {title: "Sign Up", currentUser: req.user});
+    res.render("index/signup", {title: "Sign Up", currentUser: req.user});
 });
 // posts to sign up page
 router.post("/signup", (req, res)=>{
@@ -29,7 +29,7 @@ router.post("/signup", (req, res)=>{
     User.register(newUser, req.body.password, (err, user)=>{
         if(err){
             req.flash("error", err.message);
-            res.render("signup");
+            res.render("index/signup",{title: "Sign Up"});
         }
         passport.authenticate("local")(req, res, ()=>{
             req.flash("success", "Welxome to TwitClone " + req.body.username);
@@ -39,7 +39,7 @@ router.post("/signup", (req, res)=>{
 });
 // shows login page
 router.get("/login", (req, res)=>{
-    res.render("login", {title: "Login", currentUser: req.user});
+    res.render("index/login", {title: "Login", currentUser: req.user});
 });
 // posts to login page
 router.post("/login", passport.authenticate("local",

@@ -1,4 +1,4 @@
-<% include ./partials/header %>
+<% include ../partials/header %>
 
     <div class="container">
         <div class="login-container">
@@ -6,7 +6,9 @@
             <div class="outer-form">
                 <form action="/signup" method="POST">
                     <input class="form-control my-2" type="text" placeholder="Username" name="username">
+                    <input class="form-control my-2" type="text" placeholder="Full Name" name="realname">
                     <input class="form-control my-2" type="password" placeholder="Password" name="password">
+                    <input class="form-control my-2" type="email" placeholder="user@email.com" name="email">
                     <button class="btn btn-red">Sign up</button>
                 </form>
                 <div class="card-bottom">
@@ -16,4 +18,4 @@
         </div> 
     </div>
 
-<% include ./partials/footer %>
+<% include ../partials/footer %>

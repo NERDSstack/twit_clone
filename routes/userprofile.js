@@ -26,26 +26,28 @@ router.get("/profile/:id", (req, res)=>{
         }
     });
 });
-// router.get("/profile/:id/edit", (req, res)=>{
-//     User.findById(req.params.id,(err, foundUser)=>{
-//         if(err || !foundUser){
-//             res.redirect("back");
-//         }else{
-//             res.render("users/edit", {title: "Edit Your Profile", currentUser: req.user});
-//         }
-//     });
-// });
-// router.put("/profile/:id", (req, res)=>{
-//     bioSanitizer = req.sanitize(req.body.user);
-//     User.findByIdAndUpdate(req.body.user._id, bioSanitizer,(err, updatedUser)=>{
-//         if(err){
-//             req.flash("error", "You can't do that");
-//             res.redirect("back");
-//         }else{
-//             req.flash("success", "Profile Updated")
-//             res.redirect("/profile/" + req.user._id, {currentUser: req.user});
-//         }
-//     });
-// });
+router.get("/profile/:id/edit", (req, res)=>{
+    User.findById(req.params.id,(err, foundUser)=>{
+        if(err || !foundUser){
+            res.redirect("back");
+        }else{
+            res.render("users/edit", {title: "Edit Your Profile", currentUser: req.user});
+        }
+    });
+});
+router.put("/profile/:id", (req, res)=>{
+    let bio = req.sanitize(req.body.bio);
+    let username = req.body.username;
+    let realname = req.body.realname;
+    User.findByIdAndUpdate(req.user.id, {bio, username, realname}, (err, updatedUser)=>{
+        if(err){
+            req.flash("error", "You can't do that");
+            res.redirect("back");
+        }else{
+            req.flash("success", "Profile Updated")
+            res.redirect("/pops");
+        }
+    });
+});
 
 module.exports = router;

@@ -3,8 +3,9 @@
 <div class="container">
     <div class="login-container">
         <div class="outer-form">
-            <form action="/profile/<%= user._id %>?_method=PUT" method="POST">
-                <div class="input-group mb-3">
+            <h2 class="text-center">Edit Profile</h2>
+            <form action="/profile/<%= currentUser.id %>?_method=PUT" method="POST">
+                <!-- <div class="input-group mb-3">
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="inputGroupFile02">
                         <label for="inputGroupFile02" class="custom-file-label" aria-describedby="inputGroupFileAddon02">Choose File</label>
@@ -12,10 +13,10 @@
                     <div class="input-group-append">
                         <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
                     </div>
-                </div>
-                <input type="text" class="form-control my-2" placeholder="<%= currentUser.username %>" name="username">
-                <input type="text" class="form-control my-2" placeholder="<%= currentUser.realname %>" name="realname">
-                <textarea name="bio" id="" cols="30" rows="10"><%= currentUser.bio %></textarea>
+                </div> -->
+                <!-- <input type="text" class="form-control my-2" placeholder="Username" name="username"> -->
+                <input type="text" class="form-control my-2" placeholder="Full Name" name="realname">
+                <textarea name="bio" id="" cols="30" rows="10" placeholder="Who are you"><%= currentUser.bio %></textarea>
                 <button class="btn btn-danger">Save Changes</button>
             </form>
         </div>
