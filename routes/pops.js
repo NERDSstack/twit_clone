@@ -72,11 +72,12 @@ router.put("/pops/:id", middleware.checkPopsOwnership, (req, res)=>{
 });
 // delete pop
 router.delete("/pops/:id", middleware.checkPopsOwnership, (req, res)=>{
-    Pops.findOneAndDelete(req.params.id, (err)=>{
+    Pops.findOneAndDelete({_id: req.params.id}, (err)=>{
         if(err){
             console.log("Error: " + err);
             res.redirect("/pops");
         }else{
+            console.log(req.params.id);
             res.redirect("/pops");
         }
     });

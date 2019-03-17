@@ -24,7 +24,8 @@ const commentRoutes = require("./routes/comments");
 const userProfileRoutes = require("./routes/userprofile");
 
 // db connection
-mongoose.connect("mongodb://phil:password1@ds163905.mlab.com:63905/twit_clone", {useNewUrlParser: true});
+// mongoose.connect("mongodb://phil:password1@ds163905.mlab.com:63905/twit_clone", {useNewUrlParser: true});
+mongoose.connect("mongodb://localhost/twit_clone",{useNewUrlParser:true});
 
 // flash config
 // flash has to come before passport config

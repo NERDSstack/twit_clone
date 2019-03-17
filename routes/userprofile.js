@@ -37,9 +37,8 @@ router.get("/profile/:id/edit", (req, res)=>{
 });
 router.put("/profile/:id", (req, res)=>{
     let bio = req.sanitize(req.body.bio);
-    let username = req.body.username;
     let realname = req.body.realname;
-    User.findByIdAndUpdate(req.user.id, {bio, username, realname}, (err, updatedUser)=>{
+    User.findByIdAndUpdate(req.user.id, {bio, realname}, (err, updatedUser)=>{
         if(err){
             req.flash("error", "You can't do that");
             res.redirect("back");

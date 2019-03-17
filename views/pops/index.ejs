@@ -15,7 +15,11 @@
                     <p class="mt-2 mb-1 ml-4"><strong><a href="/profile/<%= pop.author.id %>">@<%= pop.author.username %></a></strong></p>
                     <small><p class="create-date ml-4 mb-2"><%= pop.created.toDateString() %></p></small>
                     <p class="ml-4 mb-2"><%= pop.poptext %></p>
+                    <hr/>
                     <div class="col-sm-5 mb-2">
+                        <p id="reply-btn" class="text-center mx-2">
+                            <a id="reply-btn-link" class="btn btn-outline-danger btn-sm" href="/pops/<%= pop._id %>"><i class="fas fa-reply"></i></a>
+                        </p>
                         <% if(currentUser && pop.author.id.equals(currentUser._id)){ %>
                             <p class="text-center mx-2" id="edit-btn">
                                 <a id="edit-btn-link" class="btn btn-outline-danger btn-sm" href="/pops/<%= pop._id %>/edit"><i class="far fa-edit"></i></a>
@@ -24,9 +28,6 @@
                                 <button id="show-delete" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></button>
                             </form>
                         <% } %>
-                        <p id="reply-btn" class="text-center mx-2">
-                            <a id="reply-btn-link" class="btn btn-outline-danger btn-sm" href="/pops/<%= pop._id %>"><i class="fas fa-reply"></i></a>
-                        </p>
                     </div>
                 </div>
                 
