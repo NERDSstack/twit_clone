@@ -1,9 +1,10 @@
 <%include ../partials/header %>
 
 <header class="text-center mt-2">
-    <h2>@<%= pop.author.username %></h2>
+    <h2><%= pop.author.username %></h2>
 </header>
 <div class="container">
+        <p><small><%= pop.created.toDateString() %></small></p>
     <p><%= pop.poptext %></p>
     <p>
         <a class="btn btn-danger btn-sm float-right" href="/pops/<%= pop._id %>/comments/new"><i class="far fa-comment-dots"></i> Reply</a>

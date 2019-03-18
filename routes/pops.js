@@ -59,13 +59,12 @@ router.get("/pops/:id/edit", middleware.checkPopsOwnership, (req, res)=>{
 });
 // update pop
 router.put("/pops/:id", middleware.checkPopsOwnership, (req, res)=>{
-    let sanitizedPop = req.sanitize(req.body.pop);
-    Pops.findByIdAndUpdate(req.params.id, sanitizedPop, (err, updatedPop)=>{
+    Pops.findByIdAndUpdate(req.params.id, req.body.pop, (err, updatedPop)=>{
         if(err){
             console.log("Error: " + err);
             res.redirect("/pops/edit");
         }else{
-            req.flash("succes", "Pop created");
+            req.flash("succes", "Pop Updated"+ {pop: updatedPop});
             res.redirect("/pops/" + req.params.id);
         }
     });

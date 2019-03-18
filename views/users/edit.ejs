@@ -14,8 +14,9 @@
                         <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
                     </div>
                 </div>
-                <input type="text" class="form-control my-2" placeholder="Full Name" name="realname">
-                <textarea name="bio" id="" cols="30" rows="10" placeholder="Who are you"><%= currentUser.bio %></textarea>
+                <input type="text" class="form-control my-2" placeholder="<%= currentUser.username %>" name="username" >
+                <input type="text" class="form-control my-2" placeholder="<%= currentUser.realname %>" name="realname" >
+                <textarea name="bio" id="" cols="30" rows="10"><%= currentUser.bio %></textarea>
                 <button class="btn btn-danger">Save Changes</button>
             </form>
         </div>

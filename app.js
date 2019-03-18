@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const expressSanitizer = require("express-sanitizer");
 const multer = require("multer");
-const path = require("path");
 // have to install method override to run other methods
 // besides get and post
 const methodOverride = require("method-override");
@@ -60,7 +59,7 @@ app.use(expressSanitizer());
 // tells app where to look to find routes
 app.use(indexRoutes);
 app.use(popRoutes);
-app.use(commentRoutes);
+app.use("/pops/:id/comments",commentRoutes);
 app.use(userProfileRoutes);
 
 // port to listen on

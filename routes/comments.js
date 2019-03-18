@@ -5,7 +5,7 @@ const Pops = require("../models/Pops");
 const Comment = require("../models/Comment");
 const middleware = require("../middleware");
 // goes to comments form
-router.get("/pops/:id/comments/new", middleware.isLoggedIn, (req, res)=>{
+router.get("/new", middleware.isLoggedIn, (req, res)=>{
     Pops.findById(req.params.id, (err, pop)=>{
         if(err){
             console.log("Error: " + err);
@@ -16,7 +16,7 @@ router.get("/pops/:id/comments/new", middleware.isLoggedIn, (req, res)=>{
 });
 // where comments form posts to
 // shows comments and single pop
-router.post("/pops/:id/comments", middleware.isLoggedIn, (req, res)=>{
+router.post("/", middleware.isLoggedIn, (req, res)=>{
     Pops.findById(req.params.id, (err, pop)=>{
         if(err){
             console.log("Error: " + err);
@@ -50,13 +50,12 @@ router.get("/:comment_id/edit", middleware.checkCommentOwnership, (req, res)=>{
             res.redirect("back");
         }else{
             Comment.findById(req.params.comment_id, (err, foundComment)=>{
-                if(err){
-                    console.log("Error: " + err);
+                if(err || !foundComment){
                     res.redirect("back");
                 }else{
                     // pop i.d. is defined in app.js
                     // this tells edit page that it can shorten the i.d.
-                    res.render("comments/edit", {pop_id: req.params.id, comment: foundComment});
+                    res.render("comments/edit", {pop: foundPop, pop_id: req.params.id, comment: foundComment, title: "Edit Comment"});
                 }
             });
         }
@@ -66,7 +65,6 @@ router.get("/:comment_id/edit", middleware.checkCommentOwnership, (req, res)=>{
 router.put("/:comment_id", middleware.checkCommentOwnership, (req, res)=>{
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, (err, updatedComment)=>{
         if(err){
-            console.log("Error: " + err);
             res.redirect("back");
         }else{
             res.redirect("/pops/" + req.params.id);
