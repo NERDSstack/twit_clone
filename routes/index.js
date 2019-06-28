@@ -3,53 +3,24 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const User = require("../models/User");
+const indexRoutes = require("../controllers/indexController")
 // routes
 // root route
-router.get("/", (req, res)=>{
-    res.render("index/loginOrSignup", {title: "Log in or Sign up"});
-});
+router.get("/", indexRoutes.loginOrSignup);
 //============
 // auth routes
 // ===========
 // shows sign up page
-router.get("/signup", (req, res)=>{
-    res.render("index/signup", {title: "Sign Up", currentUser: req.user});
-});
+router.get("/signup", indexRoutes.registerPage);
 // posts to sign up page
-router.post("/signup", (req, res)=>{
-    const newUser = new User (
-                                {
-                                    username: req.body.username,
-                                    realname: req.body.realname,
-                                    avatar: req.body.avatar,
-                                    email: req.body.email,
-                                    bio: req.body.bio
-                                }
-                            );
-    User.register(newUser, req.body.password, (err, user)=>{
-        if(err){
-            req.flash("error", err.message);
-            res.render("index/signup",{title: "Sign Up"});
-        }
-        passport.authenticate("local")(req, res, ()=>{
-            req.flash("success", "Welxome to TwitClone " + req.body.username);
-            res.redirect("/pops");
-        });
-    });
-});
+router.post("/signup", indexRoutes.register);
 // shows login page
-router.get("/login", (req, res)=>{
-    res.render("index/login", {title: "Login", currentUser: req.user});
-});
+router.get("/login", indexRoutes.loginPage);
 // posts to login page
 router.post("/login", passport.authenticate("local",
-        {
-            successRedirect: "/pops",
-            failureRedirect: "/login"}),
-            (req, res)=>{
-});
-router.get("/logout", (req, res)=>{
-    req.logout();
-    res.redirect("/pops");
-});
+    {
+        successRedirect: "/pops",
+        failureRedirect: "/login"
+    }));
+router.get("/logout", indexRoutes.logout);
 module.exports = router;
